@@ -1,4 +1,4 @@
-# Fastify API ✨
+# Personal API ✨
 
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
 - **Framework:** [NestJS](https://nestjs.com/) & [Fastify](https://fastify.dev/)
