@@ -1,5 +1,5 @@
 {
-  "name": "fastify-api",
+  "name": "personal-api",
   "version": "0.0.1",
   "description": "Personal API built with Nest JS, Fastify, Prisma, PostgreSQL and Supabase.",
   "author": "Sherbolot Arbaev",
