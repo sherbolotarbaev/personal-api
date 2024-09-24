@@ -52,7 +52,7 @@ model GuestBookMessage {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  author    User              @relation(fields: [authorId], references: [id])
+  author    User              @relation(fields: [authorId], references: [id], onDelete: Cascade)
   reactions MessageReaction[]
 
   @@index([createdAt, id])
@@ -65,7 +65,7 @@ model PostView {
   likesCount Int @default(0)
 
   likes  PostLike[]
-  User   User?      @relation(fields: [userId], references: [id])
+  User   User?      @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId Int?
 }
 
@@ -73,8 +73,8 @@ model PostLike {
   userId Int
   slug   String
 
-  user User     @relation(fields: [userId], references: [id])
-  post PostView @relation(fields: [slug], references: [slug])
+  user User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post PostView @relation(fields: [slug], references: [slug], onDelete: Cascade)
 
   @@id([userId, slug])
 }
@@ -85,8 +85,8 @@ model MessageReaction {
 
   emoji String
 
-  user    User             @relation(fields: [userId], references: [id])
-  message GuestBookMessage @relation(fields: [messageId], references: [id])
+  user    User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  message GuestBookMessage @relation(fields: [messageId], references: [id], onDelete: Cascade)
 
   @@id([userId, messageId, emoji])
 }

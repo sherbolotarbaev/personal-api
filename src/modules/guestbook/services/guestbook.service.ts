@@ -119,7 +119,7 @@ export class GuestbookService {
         },
       });
 
-      await this.cacheMessages();
+      this.cacheMessages();
 
       return {
         message,
@@ -149,7 +149,7 @@ export class GuestbookService {
         },
       });
 
-      await this.cacheMessages();
+      this.cacheMessages();
 
       return {
         message: updatedMessage,
@@ -167,27 +167,29 @@ export class GuestbookService {
     const message = await this.findMessageById(id);
 
     try {
-      return this.prisma.$transaction(async (prisma) => {
-        await prisma.messageReaction.deleteMany({
-          where: {
-            messageId: message.id,
-            userId,
-          },
-        });
+      return this.prisma.$transaction(
+        async (prisma) => {
+          await prisma.messageReaction.deleteMany({
+            where: {
+              messageId: message.id,
+            },
+          });
 
-        const deletedMessage = await prisma.guestBookMessage.delete({
-          where: {
-            id: message.id,
-            authorId: userId,
-          },
-        });
+          const deletedMessage = await prisma.guestBookMessage.delete({
+            where: {
+              id: message.id,
+              authorId: userId,
+            },
+          });
 
-        await this.cacheMessages();
+          this.cacheMessages();
 
-        return {
-          message: deletedMessage,
-        };
-      });
+          return {
+            message: deletedMessage,
+          };
+        },
+        { timeout: 50000 }, // 50 seconds
+      );
     } catch (error) {
       this.logger.error('Failed to delete guestbook message:', error);
       throw new NotImplementedException('Failed to delete guestbook message.');
@@ -237,7 +239,7 @@ export class GuestbookService {
         },
       });
 
-      await this.cacheMessages();
+      this.cacheMessages();
 
       return {
         reaction,
@@ -267,7 +269,7 @@ export class GuestbookService {
         },
       });
 
-      await this.cacheMessages();
+      this.cacheMessages();
 
       return {
         reaction,
