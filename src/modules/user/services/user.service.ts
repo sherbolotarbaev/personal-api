@@ -56,6 +56,7 @@ export class UserService {
     email: string,
     name: string,
     surname: string,
+    photo?: string,
   ) {
     const user = await this.findByEmail(email);
 
@@ -65,8 +66,9 @@ export class UserService {
 
     return this.createUser({
       name,
-      surname: surname,
+      surname,
       email,
+      photo,
     });
   }
 

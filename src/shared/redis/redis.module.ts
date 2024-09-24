@@ -23,7 +23,12 @@ const RedisOptions: CacheModuleAsyncOptions = {
     return {
       ...redisConfig,
       store: redisStore,
-      no_ready_check: true,
+      no_ready_check: true, // Redis ready check disabled for faster startup
+      connectTimeout: 5000, // Redis connection timeout in milliseconds
+      socket: {
+        reconnectStrategy: (retries: number) => Math.min(retries * 50, 500), // Reconnect strategy
+        timeout: 10000, // Redis socket timeout in milliseconds
+      },
     };
   },
   inject: [ConfigService],

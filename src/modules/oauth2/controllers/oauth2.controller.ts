@@ -54,6 +54,7 @@ export class OAuth2Controller {
       given_name: name,
       family_name: surname,
       email,
+      picture,
     } = await this.oauth2Service.getUserData<IGoogleUser>(provider, cbQuery);
     return this.callbackAndRedirect(
       request,
@@ -62,6 +63,7 @@ export class OAuth2Controller {
       email,
       name,
       surname,
+      picture.replace('s96-c', 's384-c'),
     );
   }
 
@@ -80,7 +82,7 @@ export class OAuth2Controller {
     @Res() response: FastifyReply,
   ): Promise<FastifyReply> {
     const provider = OAuthProvidersEnum.GITHUB;
-    const { name, login, email } =
+    const { name, login, email, avatar_url } =
       await this.oauth2Service.getUserData<IGitHubUser>(provider, cbQuery);
     return this.callbackAndRedirect(
       request,
@@ -89,6 +91,7 @@ export class OAuth2Controller {
       email,
       name?.split(' ')[0] || login,
       name?.split(' ')[1] || ' ',
+      avatar_url,
     );
   }
 
@@ -107,12 +110,14 @@ export class OAuth2Controller {
     email: string,
     name: string,
     surname: string,
+    photo?: string,
   ): Promise<FastifyReply> {
     const { accessToken } = await this.oauth2Service.callback(
       provider,
       email,
       name,
       surname,
+      photo,
     );
 
     setCookie(request, response, 'session', accessToken);

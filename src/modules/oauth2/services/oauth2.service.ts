@@ -190,12 +190,14 @@ export class OAuth2Service {
     email: string,
     name: string,
     surname: string,
+    photo?: string,
   ): Promise<ICallbackResult> {
     const user = await this.userService.findOrCreate(
       provider,
       email,
       name,
       surname,
+      photo,
     );
 
     const code = OAuth2Service.generateCode();
