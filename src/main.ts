@@ -63,4 +63,4 @@ async function bootstrap() {
     process.exit(1);
   }
 }
-export default bootstrap();
+bootstrap();
