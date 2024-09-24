@@ -67,8 +67,8 @@ export class UserService {
     return this.createUser({
       name,
       surname,
-      email,
-      photo,
+      email: this.formatEmail(email),
+      photo: photo ? photo : `https://avatar.vercel.sh/${email}`,
     });
   }
 
