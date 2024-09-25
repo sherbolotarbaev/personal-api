@@ -1,34 +1,36 @@
+const webpack = require('webpack');
 const path = require('path');
+const nodeExternals = require('webpack-node-externals');
 
-module.exports = (options, webpack) => {
-  const lazyImports = [
-    '@nestjs/microservices/microservices-module',
-    '@nestjs/websockets/socket-module',
-  ];
-
+module.exports = function (options, webpack) {
   return {
     ...options,
+    entry: ['webpack/hot/poll?100', options.entry],
+    externals: [
+      nodeExternals({
+        allowlist: ['webpack/hot/poll?100'],
+      }),
+    ],
+    module: {
+      rules: [
+        {
+          test: /.tsx?$/,
+          use: 'ts-loader',
+          exclude: /node_modules/,
+        },
+      ],
+    },
     resolve: {
-      ...options.resolve,
+      extensions: ['.tsx', '.ts', '.js'],
       alias: {
-        ...options.resolve.alias,
         '~': path.resolve(__dirname, 'src'),
       },
     },
-    externals: [],
     plugins: [
       ...options.plugins,
-      new webpack.IgnorePlugin({
-        checkResource(resource) {
-          if (lazyImports.includes(resource)) {
-            try {
-              require.resolve(resource);
-            } catch (err) {
-              return true;
-            }
-          }
-          return false;
-        },
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.WatchIgnorePlugin({
+        paths: [/\.js$/, /\.d\.ts$/],
       }),
     ],
   };
