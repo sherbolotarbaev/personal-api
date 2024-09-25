@@ -81,7 +81,7 @@ export class OtpService {
       expiresAt,
     };
 
-    Promise.all([
+    await Promise.all([
       this.cacheManager.set(cacheKey, cachePayload),
       this.emailService.sendVerificationCode(user.email, otp),
     ]);
