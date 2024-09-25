@@ -191,6 +191,7 @@ export class OAuth2Service {
     name: string,
     surname: string,
     photo?: string,
+    domain?: string,
   ): Promise<ICallbackResult> {
     const user = await this.userService.findOrCreate(
       provider,
@@ -215,6 +216,7 @@ export class OAuth2Service {
     const accessToken = await this.jwtService.generateToken(
       user,
       TokenTypeEnum.ACCESS,
+      domain,
     );
 
     return {

@@ -13,8 +13,8 @@ import type { FastifyReply, FastifyRequest } from 'fastify';
 
 // import { Public } from '~/modules/auth/common/decorators';
 import { Public } from '../../auth/common/decorators'; // fix: vercel issue
-// import { setCookie } from '~/utils/cookie';
-import { setCookie } from '../../../utils/cookie'; // fix: vercel issue
+// import { extractDomain, setCookie } from '~/utils/cookie';
+import { extractDomain, setCookie } from '../../../utils/cookie'; // fix: vercel issue
 
 // import { type IAppConfig, AppConfig } from '~/config';
 import { type IAppConfig, AppConfig } from '../../../config'; // fix: vercel issue
@@ -112,12 +112,14 @@ export class OAuth2Controller {
     surname: string,
     photo?: string,
   ): Promise<FastifyReply> {
+    const domain = extractDomain(request.hostname.split(':')[0]);
     const { accessToken } = await this.oauth2Service.callback(
       provider,
       email,
       name,
       surname,
       photo,
+      domain,
     );
 
     setCookie(request, response, 'session', accessToken);
