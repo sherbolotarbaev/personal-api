@@ -1,8 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "version": 2,
-  "buildCommand": "pnpm run build",
-  "outputDirectory": "dist",
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm build",
   "builds": [
     {
       "src": "src/main.ts",
@@ -12,7 +11,8 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "src/main.ts"
+      "dest": "src/main.ts",
+      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
     }
   ]
 }

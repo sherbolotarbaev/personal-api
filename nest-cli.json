@@ -4,10 +4,12 @@
   "sourceRoot": "src",
   "compilerOptions": {
     "deleteOutDir": true,
-    "watchAssets": true,
-    "assets": ["templates/*"],
-    "webpack": true,
-    "tsConfigPath": "tsconfig.json"
+    "assets": [
+      {
+        "include": "templates/*",
+        "watchAssets": true
+      }
+    ]
   },
   "generateOptions": {
     "spec": false
