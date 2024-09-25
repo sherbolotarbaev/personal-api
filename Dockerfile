@@ -30,10 +30,10 @@ FROM node:20-alpine AS final
 WORKDIR /home/app/api
 
 # Copy built app and dependencies from build stage
-COPY --from=build /home/app/api .
+COPY --from=build /home/app/api/dist ./dist
 
 # Expose port
-EXPOSE 5003
+EXPOSE 8888
 
 # Start the app
 CMD ["pnpm", "start:prod", "--host", "0.0.0.0"]
