@@ -5,6 +5,11 @@
   "compilerOptions": {
     "deleteOutDir": true,
     "watchAssets": true,
-    "assets": ["templates/*"]
+    "assets": ["templates/*"],
+    "webpack": true,
+    "tsConfigPath": "tsconfig.json"
+  },
+  "generateOptions": {
+    "spec": false
   }
 }

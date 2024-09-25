@@ -6,8 +6,7 @@
     "lib": ["ESNext"],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "baseUrl": ".",
-    // "rootDir": ".",
+    "baseUrl": "./",
     "outDir": "./dist",
     "paths": {
       "~/*": ["src/*"]

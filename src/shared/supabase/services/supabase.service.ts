@@ -10,10 +10,8 @@ import {
 import type { File } from '@nest-lab/fastify-multer';
 import { SupabaseClient, createClient } from '@supabase/supabase-js';
 
-// import { ErrorEnum } from '~/constants/error.constant';
-import { ErrorEnum } from '../../../constants/error.constant'; // fix: vercel issue
-// import { type ISecurityConfig, SecurityConfig } from '~/config';
-import { type ISecurityConfig, SecurityConfig } from '../../../config'; // fix: vercel issue
+import { type ISecurityConfig, SecurityConfig } from '~/config';
+import { ErrorEnum } from '~/constants/error.constant';
 
 @Injectable()
 export class SupabaseService {

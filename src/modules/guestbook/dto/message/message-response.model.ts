@@ -1,6 +1,5 @@
 import * as z from 'nestjs-zod/z';
-// import { GuestBookMessageSchema } from '~/types/schema';
-import { GuestBookMessageSchema } from '../../../../types/schema'; // fix: vercel issue
+import { GuestBookMessageSchema } from '~/types/schema';
 
 const MessageResponseSchema = z.object({
   message: GuestBookMessageSchema,

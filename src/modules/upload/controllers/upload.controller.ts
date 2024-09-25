@@ -6,8 +6,7 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 
-// import { AuthUser } from '~/modules/auth/common/decorators';
-import { AuthUser } from '../../auth/common/decorators'; // fix: vercel issue
+import { AuthUser } from '~/modules/auth/common/decorators';
 
 import { UploadService } from '../services';
 

@@ -6,8 +6,7 @@ import {
 } from '@nestjs/common';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 
-// import { setCookie } from '~/utils/cookie';
-import { setCookie } from '../../../../utils/cookie'; // fix: vercel issue
+import { setCookie } from '~/utils/cookie';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';

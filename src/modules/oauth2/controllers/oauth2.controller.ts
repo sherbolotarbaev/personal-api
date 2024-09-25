@@ -11,13 +11,10 @@ import {
 } from '@nestjs/common';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 
-// import { Public } from '~/modules/auth/common/decorators';
-import { Public } from '../../auth/common/decorators'; // fix: vercel issue
-// import { extractDomain, setCookie } from '~/utils/cookie';
-import { extractDomain, setCookie } from '../../../utils/cookie'; // fix: vercel issue
+import { Public } from '~/modules/auth/common/decorators';
+import { extractDomain, setCookie } from '~/utils/cookie';
 
-// import { type IAppConfig, AppConfig } from '~/config';
-import { type IAppConfig, AppConfig } from '../../../config'; // fix: vercel issue
+import { type IAppConfig, AppConfig } from '~/config';
 
 import { OAuthProvidersEnum } from '../common/enums';
 import { OAuthFlagGuard } from '../common/guards';

@@ -13,13 +13,10 @@ import {
   type JwtVerifyOptions,
 } from '@nestjs/jwt';
 
-// import { jwtRegToken, type IJwtConfig } from '~/config';
-import { jwtRegToken, type IJwtConfig } from '../../../config'; // fix: vercel issue
+import { jwtRegToken, type IJwtConfig } from '~/config';
 
-// import { isDev } from '~/global/env';
-import { isDev } from '../../../global/env';
-// import { ErrorEnum } from '~/constants/error.constant';
-import { ErrorEnum } from '../../../constants/error.constant'; // fix: vercel issue
+import { ErrorEnum } from '~/constants/error.constant';
+import { isDev } from '~/global/env';
 
 import { TokenTypeEnum } from '../common/enums';
 import { IAccessPayload, IAccessToken } from '../common/interfaces';

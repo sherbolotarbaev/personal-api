@@ -8,20 +8,13 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
 import type { MailerAsyncOptions } from '@nestjs-modules/mailer/dist/interfaces/mailer-async-options.interface';
 import { HttpModule } from '@nestjs/axios';
 
-// import {
-//   appRegToken,
-//   mailerRegToken,
-//   type ConfigKeyPaths,
-//   type IAppConfig,
-//   type IMailerConfig,
-// } from '~/config';
 import {
   appRegToken,
   mailerRegToken,
   type ConfigKeyPaths,
   type IAppConfig,
   type IMailerConfig,
-} from '../../config'; // fix: vercel issue
+} from '~/config';
 
 import { EmailService } from './services';
 

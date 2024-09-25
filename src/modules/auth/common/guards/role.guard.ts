@@ -7,8 +7,7 @@ import {
 import { Reflector } from '@nestjs/core';
 import type { FastifyRequest } from 'fastify';
 
-// import { ErrorEnum } from '~/constants/error.constant';
-import { ErrorEnum } from '../../../../constants/error.constant'; // fix: vercel issue
+import { ErrorEnum } from '~/constants/error.constant';
 import { ROLES_KEY } from '../decorators/roles.decorator';
 
 @Injectable()

@@ -4,15 +4,11 @@ import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { compare, hash } from 'bcrypt';
 import moment from 'moment';
 
-// import { ErrorEnum } from '~/constants/error.constant';
-import { ErrorEnum } from '../../../constants/error.constant'; // fix: vercel issue
-// import { UserService } from '~/modules/user/services';
-import { UserService } from '../../../modules/user/services'; // fix: vercel issue
-// import { EmailService } from '~/shared/email/services';
-import { EmailService } from '../../email/services'; // fix: vercel issue
+import { ErrorEnum } from '~/constants/error.constant';
+import { UserService } from '~/modules/user/services';
+import { EmailService } from '~/shared/email/services';
 
-// import { TooManyRequestsException } from '~/common/exceptions/too-many-requests.exception';
-import { TooManyRequestsException } from '../../../common/exceptions/too-many-requests.exception'; // fix: vercel issue
+import { TooManyRequestsException } from '~/common/exceptions/too-many-requests.exception';
 import type { IOtpCachePayload } from '../common/interfaces';
 
 import { SendOtpDto } from '../dto';

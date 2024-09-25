@@ -9,31 +9,19 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 
-// import { JwtService } from '~/shared/jwt/services';
-import { JwtService } from '../../../shared/jwt/services'; // fix: vercel issue
-// import { TokenTypeEnum } from '~/shared/jwt/common/enums';
-import { TokenTypeEnum } from '../../../shared/jwt/common/enums'; // fix: vercel issue
+import { TokenTypeEnum } from '~/shared/jwt/common/enums';
+import { JwtService } from '~/shared/jwt/services';
 
-// import { UserService } from '~/modules/user/services';
-import { UserService } from '../../user/services'; // fix: vercel issue
+import type { IAuthResult } from '~/modules/auth/common/interfaces';
+import { UserService } from '~/modules/user/services';
 
-// import type { IAuthResult } from '~/modules/auth/common/interfaces';
-import type { IAuthResult } from '../../auth/common/interfaces'; // fix: vercel issue
-
-// import { isNull } from '~/utils/validation';
-import { isNull } from '../../../utils/validation'; // fix: vercel issue
-// import {
-//   type IOAuthConfig,
-//   type IAppConfig,
-//   OAuthConfig,
-//   AppConfig,
-// } from '~/config';
 import {
   AppConfig,
   type IAppConfig,
   type IOAuthConfig,
   OAuthConfig,
-} from '../../../config'; // fix: vercel issue
+} from '~/config';
+import { isNull } from '~/utils/validation';
 
 import { catchError, firstValueFrom } from 'rxjs';
 import { v4 } from 'uuid';

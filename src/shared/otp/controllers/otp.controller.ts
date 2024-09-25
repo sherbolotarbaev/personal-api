@@ -1,7 +1,6 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 
-// import { Public } from '~/modules/auth/common/decorators';
-import { Public } from '../../../modules/auth/common/decorators'; // fix: vercel issue
+import { Public } from '~/modules/auth/common/decorators';
 
 import { SendOtpDto } from '../dto';
 import { OtpService } from '../services';

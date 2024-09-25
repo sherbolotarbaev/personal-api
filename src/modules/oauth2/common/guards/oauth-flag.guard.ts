@@ -9,10 +9,8 @@ import {
 } from '@nestjs/common';
 import type { FastifyRequest } from 'fastify';
 
-// import { isNull } from '~/utils/validation';
-import { isNull } from '../../../../utils/validation'; // fix: vercel issue
-// import { IOAuthConfig, OAuthConfig } from '~/config';
-import { type IOAuthConfig, OAuthConfig } from '../../../../config'; // fix: vercel issue
+import { IOAuthConfig, OAuthConfig } from '~/config';
+import { isNull } from '~/utils/validation';
 
 import type { OAuthProvidersEnum } from '../enums';
 import type { IClient } from '../interfaces';

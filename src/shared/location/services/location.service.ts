@@ -5,10 +5,8 @@ import {
   NotImplementedException,
 } from '@nestjs/common';
 
-// import { type ISecurityConfig, SecurityConfig } from '~/config';
-import { type ISecurityConfig, SecurityConfig } from '../../../config'; // fix: vercel issue
-// import { ErrorEnum } from '~/constants/error.constant';
-import { ErrorEnum } from '../../../constants/error.constant'; // fix: vercel issue
+import { type ISecurityConfig, SecurityConfig } from '~/config';
+import { ErrorEnum } from '~/constants/error.constant';
 
 import IPinfoWrapper, { type IPinfo } from 'node-ipinfo';
 

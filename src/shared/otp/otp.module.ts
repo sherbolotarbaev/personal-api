@@ -1,7 +1,6 @@
 import { Global, Module } from '@nestjs/common';
 
-// import { UserService } from '~/modules/user/services';
-import { UserService } from '../../modules/user/services'; // fix: vercel issue
+import { UserService } from '~/modules/user/services';
 
 import { OtpController } from './controllers';
 import { OtpService } from './services';

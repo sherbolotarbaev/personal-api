@@ -8,30 +8,20 @@ import {
 } from '@nestjs/common';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
-// import { JwtService } from '~/shared/jwt/services';
-import { JwtService } from '../../../shared/jwt/services'; // fix: vercel issue
-// import { PrismaService } from '~/shared/database/services';
-import { PrismaService } from '../../../shared/database/services'; // fix: vercel issue
-// import { LocationService } from '~/shared/location/services';
-import { LocationService } from '../../../shared/location/services'; // fix: vercel issue
-// import { OtpService } from '~/shared/otp/services';
-import { OtpService } from '../../../shared/otp/services'; // fix: vercel issue
-// import { EmailService } from '~/shared/email/services';
-import { EmailService } from '../../../shared/email/services'; // fix: vercel issue
-// import { TokenTypeEnum } from '~/shared/jwt/common/enums';
-import { TokenTypeEnum } from '../../../shared/jwt/common/enums'; // fix: vercel issue
+import { PrismaService } from '~/shared/database/services';
+import { EmailService } from '~/shared/email/services';
+import { TokenTypeEnum } from '~/shared/jwt/common/enums';
+import { JwtService } from '~/shared/jwt/services';
+import { LocationService } from '~/shared/location/services';
+import { OtpService } from '~/shared/otp/services';
 
-// import { UserService } from '~/modules/user/services';
-import { UserService } from '../../user/services'; // fix: vercel issue
+import { UserService } from '~/modules/user/services';
 
-// import { ErrorEnum } from '~/constants/error.constant';
-import { ErrorEnum } from '../../../constants/error.constant'; // fix: vercel issue
-// import { IUserAgent } from '~/utils/user-agent/interfaces';
-import { IUserAgent } from '../../../utils/user-agent/interfaces'; // fix: vercel issue
+import { ErrorEnum } from '~/constants/error.constant';
+import { IUserAgent } from '~/utils/user-agent/interfaces';
 import type { IAuthResult } from '../common/interfaces';
 
-// import { isDev } from '~/global/env';
-import { isDev } from '../../../global/env'; // fix: vercel issue
+import { isDev } from '~/global/env';
 
 import { EditMeDto, SignInDto, SignUpDto } from '../dto';
 

@@ -11,15 +11,11 @@ import {
 } from '@nestjs/common';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 
+import { Ip } from '~/common/decorators/ip.decorator';
+import { UserAgent } from '~/common/decorators/user-agent.decorator';
+import { setCookie } from '~/utils/cookie';
+import { IUserAgent } from '~/utils/user-agent/interfaces';
 import { AuthUser } from '../common/decorators';
-// import { Ip } from '~/decorators/ip.decorator';
-import { Ip } from '../../../common/decorators/ip.decorator'; // fix: vercel issue
-// import { UserAgent } from '~/common/decorators/user-agent.decorator';
-import { UserAgent } from '../../../common/decorators/user-agent.decorator'; // fix: vercel issue
-// import { IUserAgent } from '~/utils/user-agent/interfaces';
-import { IUserAgent } from '../../../utils/user-agent/interfaces'; // fix: vercel issue
-// import { setCookie } from '~/utils/cookie'
-import { setCookie } from '../../../utils/cookie'; // fix: vercel issue
 
 import { EditMeDto } from '../dto';
 import { AuthService } from '../services';

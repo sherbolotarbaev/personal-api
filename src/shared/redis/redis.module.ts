@@ -3,16 +3,11 @@ import { Module } from '@nestjs/common';
 import { CacheModule, CacheModuleAsyncOptions } from '@nestjs/cache-manager';
 import { ConfigService } from '@nestjs/config';
 
-// import {
-//   redisRegToken,
-//   type ConfigKeyPaths,
-//   type IRedisConfig,
-// } from '~/config';
 import {
   redisRegToken,
   type ConfigKeyPaths,
   type IRedisConfig,
-} from '../../config'; // fix: vercel issue
+} from '~/config';
 
 import * as redisStore from 'cache-manager-redis-store';
 

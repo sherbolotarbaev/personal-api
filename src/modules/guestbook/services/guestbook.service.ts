@@ -9,8 +9,7 @@ import {
 } from '@nestjs/common';
 import type { GuestBookMessage, Prisma } from '@prisma/client';
 
-// import { PrismaService } from '~/shared/database/services';
-import { PrismaService } from '../../../shared/database/services'; // fix: vercel issue
+import { PrismaService } from '~/shared/database/services';
 
 import {
   GetMessagesDto,
