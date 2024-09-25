@@ -22,6 +22,7 @@ module.exports = function (options, webpack) {
     },
     resolve: {
       extensions: ['.tsx', '.ts', '.js'],
+      ...options.resolve.alias,
       alias: {
         '~': path.resolve(__dirname, 'src'),
       },
