@@ -20,18 +20,16 @@ module.exports = function (options, webpack) {
         },
       ],
     },
+    output: {
+      filename: '[name].js',
+      path: path.resolve(__dirname, 'dist'),
+    },
     resolve: {
       extensions: ['.tsx', '.ts', '.js'],
       alias: {
         '~': path.resolve(__dirname, 'src'),
       },
     },
-    plugins: [
-      ...options.plugins,
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.WatchIgnorePlugin({
-        paths: [/\.js$/, /\.d\.ts$/],
-      }),
-    ],
+    plugins: [...options.plugins, new webpack.HotModuleReplacementPlugin()],
   };
 };
