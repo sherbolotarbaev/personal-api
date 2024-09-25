@@ -70,7 +70,7 @@ let OtpService = exports.OtpService = class OtpService {
             otpHash,
             expiresAt,
         };
-        Promise.all([
+        await Promise.all([
             this.cacheManager.set(cacheKey, cachePayload),
             this.emailService.sendVerificationCode(user.email, otp),
         ]);
