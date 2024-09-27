@@ -1,4 +1,3 @@
-import { Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import type { NestFastifyApplication } from '@nestjs/platform-fastify';
@@ -22,19 +21,16 @@ async function bootstrap() {
     {
       bufferLogs: true,
       snapshot: true,
-      // forceCloseConnections: true,
     },
   );
 
   const configService = app.get(ConfigService<ConfigKeyPaths>);
-  const { port, name, frontBaseUrl } = configService.get(appRegToken, {
+  const { frontBaseUrl } = configService.get(appRegToken, {
     infer: true,
   });
   const { cookieSecret } = configService.get(securityRegToken, {
     infer: true,
   });
-
-  const logger = new Logger(name);
 
   await app.register<FastifyCookieOptions>(fastifyCookie, {
     secret: cookieSecret,
@@ -54,13 +50,9 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ZodValidationPipe());
 
-  try {
-    await app.listen(port, '0.0.0.0');
-    const url = await app.getUrl();
-    logger.log(`🦖 server is running on ${url}`);
-  } catch (error) {
-    logger.error(error);
-    process.exit(1);
-  }
+  await app.init();
+
+  return app.getHttpAdapter().getInstance();
 }
-bootstrap();
+
+export default bootstrap;
