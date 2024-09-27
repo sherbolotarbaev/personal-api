@@ -144,7 +144,7 @@ export class GuestbookService {
         },
         data: {
           body,
-          authorId: userId,
+          isEdited: true,
         },
       });
 
