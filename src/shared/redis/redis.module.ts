@@ -7,7 +7,7 @@ import {
   redisRegToken,
   type ConfigKeyPaths,
   type IRedisConfig,
-} from '~/config';
+} from '../../config';
 
 import * as redisStore from 'cache-manager-redis-store';
 

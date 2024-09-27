@@ -12,7 +12,7 @@ import {
   Query,
 } from '@nestjs/common';
 
-import { AuthUser, Public } from '~/modules/auth/common/decorators';
+import { AuthUser, Public } from '../../auth/common/decorators';
 
 import { GetMessagesDto, MessageDto, ReactionDto } from '../dto';
 import { GuestbookService } from '../services';

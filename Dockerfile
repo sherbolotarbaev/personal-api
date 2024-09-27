@@ -2,7 +2,7 @@
 FROM node:20-alpine as build
 
 ENV PNPM_HOME="/pnpm" \
-	PATH="$PNPM_HOME:$PATH"
+    PATH="$PNPM_HOME:$PATH"
 
 WORKDIR /home/app/api
 
@@ -30,7 +30,7 @@ FROM node:20-alpine AS final
 WORKDIR /home/app/api
 
 # Copy built app and dependencies from build stage
-COPY --from=build /home/app/api/dist ./dist
+COPY --from=build /home/app/api .
 
 # Expose port
 EXPOSE 8888

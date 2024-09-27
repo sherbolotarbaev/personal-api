@@ -14,7 +14,7 @@ import {
   type ConfigKeyPaths,
   type IAppConfig,
   type IMailerConfig,
-} from '~/config';
+} from '../../config';
 
 import { EmailService } from './services';
 

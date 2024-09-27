@@ -10,13 +10,13 @@ import { MailerService } from '@nestjs-modules/mailer';
 import { HttpService } from '@nestjs/axios';
 import { firstValueFrom } from 'rxjs';
 
-import { type ISecurityConfig, SecurityConfig } from '~/config';
+import { type ISecurityConfig, SecurityConfig } from '../../../config';
 import type {
   IHunterResponse,
   IVerificationCodeLimit,
 } from '../common/interfaces';
 
-import { ErrorEnum } from '~/constants/error.constant';
+import { ErrorEnum } from '../../../constants/error.constant';
 
 import moment from 'moment';
 

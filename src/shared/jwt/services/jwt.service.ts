@@ -13,10 +13,10 @@ import {
   type JwtVerifyOptions,
 } from '@nestjs/jwt';
 
-import { jwtRegToken, type IJwtConfig } from '~/config';
+import { jwtRegToken, type IJwtConfig } from '../../../config';
 
-import { ErrorEnum } from '~/constants/error.constant';
-import { isDev } from '~/global/env';
+import { ErrorEnum } from '../../../constants/error.constant';
+import { isDev } from '../../../global/env';
 
 import { TokenTypeEnum } from '../common/enums';
 import { IAccessPayload, IAccessToken } from '../common/interfaces';

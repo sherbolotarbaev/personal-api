@@ -1,7 +1,7 @@
 import { Logger } from '@nestjs/common';
 import { FastifyAdapter } from '@nestjs/platform-fastify';
 
-import { userAgent } from '~/utils/user-agent';
+import { userAgent } from '../../utils/user-agent';
 
 const app: FastifyAdapter = new FastifyAdapter({
   trustProxy: true,

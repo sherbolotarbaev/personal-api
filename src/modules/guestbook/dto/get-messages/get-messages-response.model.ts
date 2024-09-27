@@ -1,5 +1,5 @@
 import * as z from 'nestjs-zod/z';
-import { GuestBookMessageSchema } from '~/types/schema';
+import { GuestBookMessageSchema } from '../../../../types/schema';
 
 const GetMessagesResponseSchema = z.object({
   totalCount: z.number(),

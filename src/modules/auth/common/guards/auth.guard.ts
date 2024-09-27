@@ -7,9 +7,9 @@ import {
 import { Reflector } from '@nestjs/core';
 import type { FastifyRequest } from 'fastify';
 
-import { TokenTypeEnum } from '~/shared/jwt/common/enums';
+import { TokenTypeEnum } from '../../../../shared/jwt/common/enums';
 
-import { JwtService } from '~/shared/jwt/services';
+import { JwtService } from '../../../../shared/jwt/services';
 
 import { IS_PUBLIC_KEY } from '../decorators/public.decorator';
 

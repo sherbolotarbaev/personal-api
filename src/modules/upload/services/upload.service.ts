@@ -1,7 +1,7 @@
 import type { File } from '@nest-lab/fastify-multer';
 import { Injectable } from '@nestjs/common';
 
-import { SupabaseService } from '~/shared/supabase/services';
+import { SupabaseService } from '../../../shared/supabase/services';
 
 @Injectable()
 export class UploadService {

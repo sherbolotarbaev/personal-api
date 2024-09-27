@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { PassportModule, type IAuthModuleOptions } from '@nestjs/passport';
 
-import { jwtRegToken } from '~/config';
+import { jwtRegToken } from '../../config';
 import { UserService } from '../user/services';
 
 import { AccountController, AuthController } from './controllers';

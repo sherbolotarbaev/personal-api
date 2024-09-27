@@ -6,8 +6,8 @@ import {
   UseGuards,
 } from '@nestjs/common';
 
-import { Roles } from '~/modules/auth/common/decorators';
-import { RoleGuard } from '~/modules/auth/common/guards';
+import { Roles } from '../../auth/common/decorators';
+import { RoleGuard } from '../../auth/common/guards';
 
 import { UserService } from '../services';
 

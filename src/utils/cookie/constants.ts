@@ -1,6 +1,6 @@
 import type { CookieSerializeOptions } from '@fastify/cookie';
 
-import { isDev } from '~/global/env';
+import { isDev } from '../../global/env';
 
 export const DEFAULT_COOKIE_OPTIONS: Partial<CookieSerializeOptions> = {
   httpOnly: true,

@@ -8,20 +8,20 @@ import {
 } from '@nestjs/common';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
-import { PrismaService } from '~/shared/database/services';
-import { EmailService } from '~/shared/email/services';
-import { TokenTypeEnum } from '~/shared/jwt/common/enums';
-import { JwtService } from '~/shared/jwt/services';
-import { LocationService } from '~/shared/location/services';
-import { OtpService } from '~/shared/otp/services';
+import { PrismaService } from '../../../shared/database/services';
+import { EmailService } from '../../../shared/email/services';
+import { TokenTypeEnum } from '../../../shared/jwt/common/enums';
+import { JwtService } from '../../../shared/jwt/services';
+import { LocationService } from '../../../shared/location/services';
+import { OtpService } from '../../../shared/otp/services';
 
-import { UserService } from '~/modules/user/services';
+import { UserService } from '../../user/services';
 
-import { ErrorEnum } from '~/constants/error.constant';
-import { IUserAgent } from '~/utils/user-agent/interfaces';
+import { ErrorEnum } from '../../../constants/error.constant';
+import { IUserAgent } from '../../../utils/user-agent/interfaces';
 import type { IAuthResult } from '../common/interfaces';
 
-import { isDev } from '~/global/env';
+import { isDev } from '../../../global/env';
 
 import { EditMeDto, SignInDto, SignUpDto } from '../dto';
 

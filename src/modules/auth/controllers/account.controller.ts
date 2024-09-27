@@ -11,10 +11,10 @@ import {
 } from '@nestjs/common';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 
-import { Ip } from '~/common/decorators/ip.decorator';
-import { UserAgent } from '~/common/decorators/user-agent.decorator';
-import { setCookie } from '~/utils/cookie';
-import { IUserAgent } from '~/utils/user-agent/interfaces';
+import { Ip } from '../../../common/decorators/ip.decorator';
+import { UserAgent } from '../../../common/decorators/user-agent.decorator';
+import { setCookie } from '../../../utils/cookie';
+import { IUserAgent } from '../../../utils/user-agent/interfaces';
 import { AuthUser } from '../common/decorators';
 
 import { EditMeDto } from '../dto';

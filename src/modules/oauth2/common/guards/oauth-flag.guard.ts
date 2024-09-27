@@ -9,8 +9,8 @@ import {
 } from '@nestjs/common';
 import type { FastifyRequest } from 'fastify';
 
-import { IOAuthConfig, OAuthConfig } from '~/config';
-import { isNull } from '~/utils/validation';
+import { IOAuthConfig, OAuthConfig } from '../../../../config';
+import { isNull } from '../../../../utils/validation';
 
 import type { OAuthProvidersEnum } from '../enums';
 import type { IClient } from '../interfaces';

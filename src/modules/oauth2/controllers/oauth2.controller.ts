@@ -11,10 +11,10 @@ import {
 } from '@nestjs/common';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 
-import { Public } from '~/modules/auth/common/decorators';
-import { extractDomain, setCookie } from '~/utils/cookie';
+import { extractDomain, setCookie } from '../../../utils/cookie';
+import { Public } from '../../auth/common/decorators';
 
-import { type IAppConfig, AppConfig } from '~/config';
+import { type IAppConfig, AppConfig } from '../../../config';
 
 import { OAuthProvidersEnum } from '../common/enums';
 import { OAuthFlagGuard } from '../common/guards';

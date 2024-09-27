@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import type { Prisma } from '@prisma/client';
 
-import type { OAuthProvidersEnum } from '~/modules/oauth2/common/enums';
+import type { OAuthProvidersEnum } from '../../oauth2/common/enums';
 
-import { PrismaService } from '~/shared/database/services';
+import { PrismaService } from '../../../shared/database/services';
 
 import { CreateUserDto, UpdateUserDto } from '../dto';
 
