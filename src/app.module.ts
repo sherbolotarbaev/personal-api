@@ -4,7 +4,14 @@ import { APP_GUARD } from '@nestjs/core';
 
 import config from './config';
 
-import { AuthModule, UploadModule, UserModule } from './modules';
+import {
+  AuthModule,
+  GuestbookModule,
+  Oauth2Module,
+  PostModule,
+  UploadModule,
+  UserModule,
+} from './modules';
 import { DatabaseModule } from './shared/database';
 import { EmailModule } from './shared/email';
 import { JwtModule } from './shared/jwt';
@@ -16,8 +23,6 @@ import { SupabaseModule } from './shared/supabase';
 import { AuthGuard } from './modules/auth/common/guards';
 
 import { AppController } from './app.controller';
-import { Oauth2Module } from './modules/oauth2/oauth2.module';
-import { GuestbookModule } from './modules/guestbook/guestbook.module';
 
 const ConfigOptions: ConfigModuleOptions = {
   isGlobal: true,
@@ -37,10 +42,11 @@ const ConfigOptions: ConfigModuleOptions = {
     RedisModule,
     SupabaseModule,
     AuthModule,
+    GuestbookModule,
+    Oauth2Module,
+    PostModule,
     UploadModule,
     UserModule,
-    Oauth2Module,
-    GuestbookModule,
   ],
   controllers: [AppController],
   providers: [
