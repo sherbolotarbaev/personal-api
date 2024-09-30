@@ -26,7 +26,6 @@ model User {
   metaData   UserMetaData?
 
   messages         GuestBookMessage[]
-  postViews        PostView[]
   messageReactions MessageReaction[]
   PostLike         PostLike[]
 }
@@ -64,9 +63,7 @@ model PostView {
   viewsCount Int @default(0)
   likesCount Int @default(0)
 
-  likes  PostLike[]
-  User   User?      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId Int?
+  likes PostLike[]
 }
 
 model PostLike {
