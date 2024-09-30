@@ -123,6 +123,6 @@ export class OAuth2Controller {
 
     return response
       .status(HttpStatus.FOUND)
-      .redirect(this.appConfig.frontBaseUrl);
+      .redirect(`${this.appConfig.frontBaseUrl}/guestbook`);
   }
 }
