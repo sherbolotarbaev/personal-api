@@ -63,6 +63,13 @@ export class GuestbookController {
     return this.guestbookService.addReaction(id, dto, userId);
   }
 
+  @Public()
+  @Get(':id/reactions')
+  @HttpCode(HttpStatus.OK)
+  async getReactions(@Param('id', ParseIntPipe) id: number) {
+    return this.guestbookService.getReactions(id);
+  }
+
   @Delete(':id/reactions')
   @HttpCode(HttpStatus.OK)
   async removeReaction(

@@ -14,6 +14,7 @@ import { PrismaService } from '../../../shared/database/services';
 import {
   GetMessagesDto,
   GetMessagesResponseModel,
+  GetReactionsResponseModel,
   MessageDto,
   MessageResponseModel,
   ReactionDto,
@@ -246,6 +247,33 @@ export class GuestbookService {
     } catch (error) {
       throw new ConflictException(
         `Reaction with emoji ${emoji} already exists.`,
+      );
+    }
+  }
+
+  public async getReactions(id: number): Promise<GetReactionsResponseModel> {
+    const message = await this.findMessageById(id);
+
+    try {
+      const reactions = await this.prisma.messageReaction.findMany({
+        where: {
+          messageId: message.id,
+        },
+        select: {
+          emoji: true,
+          userId: true,
+        },
+      });
+      return {
+        reactions,
+      };
+    } catch (error) {
+      this.logger.error(
+        `Failed to get reactions of message with ID ${id}:`,
+        error.message,
+      );
+      throw new NotImplementedException(
+        'Failed to get reactions of this message.',
       );
     }
   }
