@@ -49,9 +49,14 @@ export class OAuthClass {
     return this.userDataUrl;
   }
 
-  public get authorizationUrl(): [string, string] {
-    const state = randomBytes(16).toString('hex');
+  public getAuthorizationUrl(next?: string): [string, string] {
+    const state = this.generateState(next);
     return [this.code.authorizeURL({ ...this.authorization, state }), state];
+  }
+
+  private generateState(next?: string): string {
+    const stateObj = { random: randomBytes(16).toString('hex'), next };
+    return Buffer.from(JSON.stringify(stateObj)).toString('base64');
   }
 
   private static genAuthorization(

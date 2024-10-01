@@ -106,13 +106,15 @@ export class OAuth2Service {
 
   public async getAuthorizationUrl(
     provider: OAuthProvidersEnum,
+    next?: string,
   ): Promise<string> {
-    const [url, state] = this.getOAuth(provider).authorizationUrl;
+    const oauth = this.getOAuth(provider);
+    const [url, state] = oauth.getAuthorizationUrl(next);
 
     try {
       await this.cacheManager.set(
         OAuth2Service.getOAuthStateKey(state),
-        provider,
+        { provider, next },
         120_000,
       );
     } catch (error) {
@@ -125,9 +127,13 @@ export class OAuth2Service {
   public async getUserData<T extends Record<string, any>>(
     provider: OAuthProvidersEnum,
     cbQuery: CallbackQueryDto,
-  ): Promise<T> {
+  ): Promise<{ userData: T; next?: string }> {
     const { code, state } = cbQuery;
-    const accessToken = await this.getAccessToken(provider, code, state);
+    const { accessToken, next } = await this.getAccessToken(
+      provider,
+      code,
+      state,
+    );
     const userReq = await firstValueFrom(
       this.httpService
         .get<T>(this.getOAuth(provider).dataUrl, {
@@ -153,7 +159,7 @@ export class OAuth2Service {
       (userReq.data as any).email = primaryEmail?.email;
     }
 
-    return userReq.data;
+    return { userData: userReq.data, next };
   }
 
   public async getGitHubEmails(
@@ -252,20 +258,23 @@ export class OAuth2Service {
     provider: OAuthProvidersEnum,
     code: string,
     state: string,
-  ): Promise<string> {
+  ): Promise<{ accessToken: string; next?: string }> {
     const oauth = this.getOAuth(provider);
-    const stateProvider = await this.cacheManager.get<OAuthProvidersEnum>(
-      OAuth2Service.getOAuthStateKey(state),
-    );
+    const cachedState = await this.cacheManager.get<{
+      provider: OAuthProvidersEnum;
+      next?: string;
+    }>(OAuth2Service.getOAuthStateKey(state));
 
-    if (!stateProvider || provider !== stateProvider) {
+    if (!cachedState || provider !== cachedState.provider) {
       throw new UnauthorizedException('Corrupted state.');
     }
 
     try {
-      return await oauth.getToken(code);
+      const accessToken = await oauth.getToken(code);
+      return { accessToken, next: cachedState.next };
     } catch (error) {
       this.logger.error('Failed to get oauth token:', error.message);
+      throw new UnauthorizedException('Failed to get OAuth token.');
     }
   }
 }
