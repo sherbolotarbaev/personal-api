@@ -1,9 +1,11 @@
 import * as z from 'nestjs-zod/z';
-import { GuestBookMessageReactionSchema } from '../../../../types/schema';
 
-const GetReactionsResponseSchema = z.object({
-  reactions: z.array(GuestBookMessageReactionSchema),
-});
+const GetReactionsResponseSchema = z.array(
+  z.object({
+    messageId: z.number(),
+    reactions: z.record(z.array(z.string())),
+  }),
+);
 
 export type GetReactionsResponseModel = z.infer<
   typeof GetReactionsResponseSchema

@@ -64,10 +64,10 @@ export class GuestbookController {
   }
 
   @Public()
-  @Get(':id/reactions')
+  @Get('reactions')
   @HttpCode(HttpStatus.OK)
-  async getReactions(@Param('id', ParseIntPipe) id: number) {
-    return this.guestbookService.getReactions(id);
+  async getReactions() {
+    return this.guestbookService.getReactions();
   }
 
   @Delete(':id/reactions')

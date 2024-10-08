@@ -251,30 +251,46 @@ export class GuestbookService {
     }
   }
 
-  public async getReactions(id: number): Promise<GetReactionsResponseModel> {
-    const message = await this.findMessageById(id);
-
+  public async getReactions(): Promise<GetReactionsResponseModel> {
     try {
       const reactions = await this.prisma.messageReaction.findMany({
-        where: {
-          messageId: message.id,
-        },
         select: {
+          messageId: true,
           emoji: true,
-          userId: true,
+          user: {
+            select: {
+              name: true,
+            },
+          },
         },
       });
-      return {
-        reactions,
-      };
+
+      const groupedReactions = reactions.reduce((acc, reaction) => {
+        const {
+          messageId,
+          emoji,
+          user: { name },
+        } = reaction;
+
+        let messageEntry = acc.find((entry) => entry.messageId === messageId);
+        if (!messageEntry) {
+          messageEntry = { messageId, reactions: {} };
+          acc.push(messageEntry);
+        }
+
+        if (!messageEntry.reactions[emoji]) {
+          messageEntry.reactions[emoji] = [];
+        }
+
+        messageEntry.reactions[emoji].push(name);
+
+        return acc;
+      }, [] as GetReactionsResponseModel);
+
+      return groupedReactions;
     } catch (error) {
-      this.logger.error(
-        `Failed to get reactions of message with ID ${id}:`,
-        error.message,
-      );
-      throw new NotImplementedException(
-        'Failed to get reactions of this message.',
-      );
+      this.logger.error('Failed to get reactions:', error.message);
+      throw new NotImplementedException('Failed to get reactions.');
     }
   }
 
