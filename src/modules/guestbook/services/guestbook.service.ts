@@ -31,6 +31,7 @@ export class GuestbookService {
     author: {
       select: {
         name: true,
+        surname: true,
         email: true,
         photo: true,
         isVerified: true,

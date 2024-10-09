@@ -27,6 +27,7 @@ export const UserSchema = z.object({
 
 export const GuestBookMessageAuthorSchema = z.object({
   name: z.string(),
+  surname: z.string(),
   email: z.string().email(),
   photo: z.string(),
   isVerified: z.boolean(),

@@ -120,7 +120,7 @@ export class EmailService {
     code: string;
   }> {
     const subject = 'Sign in code';
-    const template = './verification-code';
+    const template = 'verification-code.hbs';
 
     try {
       this.logger.log(`Sending verification email to ${email}...`);
