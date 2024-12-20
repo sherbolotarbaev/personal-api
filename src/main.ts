@@ -41,7 +41,7 @@ async function bootstrap() {
   await app.register(fastifyCsrfProtection);
 
   await app.register(fastifyCors, {
-    origin: frontBaseUrl,
+    origin: [frontBaseUrl, 'https://kyrgyzstan-info.vercel.app'],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   });
