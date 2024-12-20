@@ -50,6 +50,7 @@
     "cache-manager-redis-store": "2",
     "fastify": "^4.28.1",
     "moment": "^2.30.1",
+    "nestjs-telegram": "^1.2.0",
     "nestjs-zod": "^3.0.0",
     "node-ipinfo": "^3.5.1",
     "reflect-metadata": "^0.1.13",

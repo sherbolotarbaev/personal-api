@@ -6,6 +6,7 @@ import config from './config';
 
 import {
   AuthModule,
+  ContactModule,
   GuestbookModule,
   Oauth2Module,
   PostModule,
@@ -42,6 +43,7 @@ const ConfigOptions: ConfigModuleOptions = {
     RedisModule,
     SupabaseModule,
     AuthModule,
+    ContactModule,
     GuestbookModule,
     Oauth2Module,
     PostModule,
