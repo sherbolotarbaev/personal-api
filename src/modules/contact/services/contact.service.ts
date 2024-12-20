@@ -6,7 +6,6 @@ import {
 } from '@nestjs/common';
 
 import { TelegramService } from 'nestjs-telegram';
-import { LocationService } from '../../../shared/location/services';
 
 import { type ISecurityConfig, SecurityConfig } from '../../../config';
 
@@ -19,19 +18,13 @@ export class ContactService {
   constructor(
     @Inject(SecurityConfig.KEY)
     private readonly securityConfig: ISecurityConfig,
-    private readonly locationService: LocationService,
     private readonly telegram: TelegramService,
   ) {}
 
-  async newMessage(ip: string, { message }: NewMessageDto) {
-    const location = await this.locationService.getLocation(ip);
-
+  async newMessage({ message }: NewMessageDto) {
     try {
       const template = () => {
         let msg = `<b>${message}</b>\n`;
-        msg += `IP: <b>${ip}</b>\n`;
-        msg += `Location: <b>${location.city}, ${location.country}, ${location.region}</b>\n`;
-        msg += `Timezone: <b>${location.timezone}</b>\n`;
         return msg;
       };
 

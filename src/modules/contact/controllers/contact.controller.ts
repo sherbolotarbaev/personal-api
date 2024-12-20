@@ -1,6 +1,5 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 
-import { Ip } from '../../../common/decorators/ip.decorator';
 import { Public } from '../../auth/common/decorators';
 
 import { NewMessageDto } from '../dto';
@@ -13,7 +12,7 @@ export class ContactController {
 
   @Post()
   @HttpCode(HttpStatus.OK)
-  async newMessage(@Ip() ip: string, @Body() dto: NewMessageDto) {
-    return this.contactService.newMessage(ip, dto);
+  async newMessage(@Body() dto: NewMessageDto) {
+    return this.contactService.newMessage(dto);
   }
 }
